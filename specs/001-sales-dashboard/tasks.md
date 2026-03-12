@@ -201,14 +201,14 @@ US1 (KPI cards) + US2 (trend chart) + US5 (error handling) are complete.
 
 > **RED phase**: Run these tests and verify they FAIL before writing any implementation
 
-- [ ] T027 [P] [US4] Write failing test: `get_region_sales(df)` returns a DataFrame with columns `region` and `total_sales`, sorted descending by `total_sales`, matching fixture data in `tests/data/test_transforms.py`
-- [ ] T028 [P] [US4] Write failing component contract test: `build_region_chart(df)` returns a `plotly.graph_objects.Figure` with one bar trace and y-axis values sorted descending in `tests/components/test_region_chart.py`
+- [X] T027 [P] [US4] Write failing test: `get_region_sales(df)` returns a DataFrame with columns `region` and `total_sales`, sorted descending by `total_sales`, matching fixture data in `tests/data/test_transforms.py`
+- [X] T028 [P] [US4] Write failing component contract test: `build_region_chart(df)` returns a `plotly.graph_objects.Figure` with one bar trace and y-axis values sorted descending in `tests/components/test_region_chart.py`
 
 ### Implementation for US4 (GREEN phase — after T027 and T028 confirmed failing)
 
-- [ ] T029 [P] [US4] Implement `get_region_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — same pattern as `get_category_sales()` using `region` column (depends on T027)
-- [ ] T030 [US4] Implement `build_region_chart(df: pd.DataFrame) -> go.Figure` in `components/region_chart.py` — same pattern as `build_category_chart()` using region data (depends on T028, T029)
-- [ ] T031 [US4] Fill right column in `dashboard.py` two-column layout with region chart, replacing the US3 placeholder (depends on T030)
+- [X] T029 [P] [US4] Implement `get_region_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — same pattern as `get_category_sales()` using `region` column (depends on T027)
+- [X] T030 [US4] Implement `build_region_chart(df: pd.DataFrame) -> go.Figure` in `components/region_chart.py` — same pattern as `build_category_chart()` using region data (depends on T028, T029)
+- [X] T031 [US4] Fill right column in `dashboard.py` two-column layout with region chart, replacing the US3 placeholder (depends on T030)
 
 **Checkpoint**: Full dashboard complete — all 5 user stories functional; `uv run pytest` passes all tests
 
@@ -218,9 +218,9 @@ US1 (KPI cards) + US2 (trend chart) + US5 (error handling) are complete.
 
 **Purpose**: Presentation, deployment verification, and constitution compliance sign-off
 
-- [ ] T032 [P] Add `st.set_page_config(page_title="ShopSmart Sales Dashboard", layout="wide")` and a page title header to `dashboard.py`
+- [X] T032 [P] Add `st.set_page_config(page_title="ShopSmart Sales Dashboard", layout="wide")` and a page title header to `dashboard.py`
 - [ ] T033 [P] Verify all 4 charts satisfy Constitution Principle III (Interactivity-First) — confirm hover tooltips work in browser for KPI cards, trend chart, category chart, and region chart
-- [ ] T034 [P] Run full test suite with `uv run pytest -v` — confirm all tests pass and no warnings
+- [X] T034 [P] Run full test suite with `uv run pytest -v` — confirm all tests pass and no warnings
 - [ ] T035 Redeploy updated dashboard to Streamlit Community Cloud — verify public URL reflects all 5 user stories and matches expected values (~$650K–$700K Total Sales, 482 Total Orders, 5 categories, 4 regions)
 
 ---

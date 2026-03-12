@@ -8,6 +8,16 @@ def get_kpi_metrics(df: pd.DataFrame) -> dict:
     }
 
 
+def get_region_sales(df: pd.DataFrame) -> pd.DataFrame:
+    return (
+        df.groupby("region", as_index=False)["total_amount"]
+        .sum()
+        .rename(columns={"total_amount": "total_sales"})
+        .sort_values("total_sales", ascending=False)
+        .reset_index(drop=True)
+    )
+
+
 def get_category_sales(df: pd.DataFrame) -> pd.DataFrame:
     return (
         df.groupby("category", as_index=False)["total_amount"]

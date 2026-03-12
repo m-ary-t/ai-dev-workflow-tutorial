@@ -102,14 +102,14 @@ data/
 
 > **RED phase**: Run these tests and verify they FAIL before writing any implementation
 
-- [ ] T007 [P] [US1] Write failing test: `get_kpi_metrics(df)` returns a dict with keys `total_sales` (float) and `total_orders` (int) matching known fixture values in `tests/data/test_transforms.py`
-- [ ] T008 [P] [US1] Write failing test: `render_kpi_cards()` component returns/renders without error when called with valid total_sales and total_orders values in `tests/components/test_kpi_cards.py`
+- [X] T007 [P] [US1] Write failing test: `get_kpi_metrics(df)` returns a dict with keys `total_sales` (float) and `total_orders` (int) matching known fixture values in `tests/data/test_transforms.py`
+- [X] T008 [P] [US1] Write failing test: `render_kpi_cards()` component returns/renders without error when called with valid total_sales and total_orders values in `tests/components/test_kpi_cards.py`
 
 ### Implementation for US1 (GREEN phase — after T007 and T008 confirmed failing)
 
-- [ ] T009 [US1] Implement `get_kpi_metrics(df: pd.DataFrame) -> dict` in `data/transforms.py` — returns `{"total_sales": float, "total_orders": int}` (depends on T007)
-- [ ] T010 [US1] Implement `render_kpi_cards(total_sales: float, total_orders: int) -> None` in `components/kpi_cards.py` — renders two Streamlit metric elements with labels "Total Sales" (formatted `$X,XXX`) and "Total Orders" (integer) (depends on T008, T009)
-- [ ] T011 [US1] Create `dashboard.py` — import `load_sales_data`, `get_kpi_metrics`, `render_kpi_cards`; wrap data load in try/except (stub error display for now); call `render_kpi_cards()` at top of page (depends on T010)
+- [X] T009 [US1] Implement `get_kpi_metrics(df: pd.DataFrame) -> dict` in `data/transforms.py` — returns `{"total_sales": float, "total_orders": int}` (depends on T007)
+- [X] T010 [US1] Implement `render_kpi_cards(total_sales: float, total_orders: int) -> None` in `components/kpi_cards.py` — renders two Streamlit metric elements with labels "Total Sales" (formatted `$X,XXX`) and "Total Orders" (integer) (depends on T008, T009)
+- [X] T011 [US1] Create `dashboard.py` — import `load_sales_data`, `get_kpi_metrics`, `render_kpi_cards`; wrap data load in try/except (stub error display for now); call `render_kpi_cards()` at top of page (depends on T010)
 
 **Checkpoint**: `uv run streamlit run dashboard.py` shows two KPI cards with correct values; `uv run pytest tests/data/test_transforms.py tests/components/test_kpi_cards.py` passes
 

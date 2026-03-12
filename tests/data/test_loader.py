@@ -24,3 +24,22 @@ def test_load_sales_data_returns_dataframe(tmp_path):
 def test_load_sales_data_missing_file_raises():
     with pytest.raises(DataLoadError):
         load_sales_data("/nonexistent/path/sales.csv")
+
+
+# T017 [US5]: CSV missing required columns raises DataLoadError with descriptive message
+def test_load_sales_data_missing_columns_raises(tmp_path):
+    csv = tmp_path / "bad.csv"
+    csv.write_text("date,order_id\n2024-01-01,ORD-001\n")
+    with pytest.raises(DataLoadError, match="missing required columns"):
+        load_sales_data(str(csv))
+
+
+# T018 [US5]: CSV with all-null total_amount raises DataLoadError
+def test_load_sales_data_all_null_total_amount_raises(tmp_path):
+    csv = tmp_path / "nulls.csv"
+    csv.write_text(
+        "date,order_id,product,category,region,quantity,unit_price,total_amount\n"
+        "2024-01-03,ORD-001,Earbuds,Audio,North,2,79.99,\n"
+    )
+    with pytest.raises(DataLoadError):
+        load_sales_data(str(csv))

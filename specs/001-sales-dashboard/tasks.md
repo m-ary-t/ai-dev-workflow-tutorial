@@ -148,13 +148,13 @@ data/
 
 > **RED phase**: Run these tests and verify they FAIL before writing any implementation
 
-- [ ] T017 [P] [US5] Write failing test: `load_sales_data()` with a CSV missing required columns raises `DataLoadError` with a descriptive message in `tests/data/test_loader.py`
-- [ ] T018 [P] [US5] Write failing test: `load_sales_data()` with a CSV where `total_amount` contains all nulls raises `DataLoadError` in `tests/data/test_loader.py`
+- [X] T017 [P] [US5] Write failing test: `load_sales_data()` with a CSV missing required columns raises `DataLoadError` with a descriptive message in `tests/data/test_loader.py`
+- [X] T018 [P] [US5] Write failing test: `load_sales_data()` with a CSV where `total_amount` contains all nulls raises `DataLoadError` in `tests/data/test_loader.py`
 
 ### Implementation for US5 (GREEN phase — after T017 and T018 confirmed failing)
 
-- [ ] T019 [US5] Extend `data/loader.py` — after loading CSV, validate required columns exist and `total_amount` has at least one non-null value; raise `DataLoadError` with plain-language message on failure (depends on T017, T018)
-- [ ] T020 [US5] Update `dashboard.py` try/except block — catch `DataLoadError` and render `st.error()` with the exception message; confirm no KPI cards, charts, or $0 values render when error is active (depends on T019)
+- [X] T019 [US5] Extend `data/loader.py` — after loading CSV, validate required columns exist and `total_amount` has at least one non-null value; raise `DataLoadError` with plain-language message on failure (depends on T017, T018)
+- [X] T020 [US5] Update `dashboard.py` try/except block — catch `DataLoadError` and render `st.error()` with the exception message; confirm no KPI cards, charts, or $0 values render when error is active (depends on T019)
 
 **Checkpoint**: `uv run pytest` passes all tests; dashboard shows error message when CSV is removed; dashboard shows full content when CSV is present
 

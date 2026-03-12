@@ -81,12 +81,12 @@ data/
 
 ### Tests (write first — confirm failing before T006)
 
-- [ ] T004 [P] Write failing test: `load_sales_data()` with a valid CSV path returns a pandas DataFrame with the expected columns in `tests/data/test_loader.py`
-- [ ] T005 [P] Write failing test: `load_sales_data()` with a missing file path raises `DataLoadError` in `tests/data/test_loader.py`
+- [X] T004 [P] Write failing test: `load_sales_data()` with a valid CSV path returns a pandas DataFrame with the expected columns in `tests/data/test_loader.py`
+- [X] T005 [P] Write failing test: `load_sales_data()` with a missing file path raises `DataLoadError` in `tests/data/test_loader.py`
 
 ### Implementation (after T004 and T005 are confirmed failing)
 
-- [ ] T006 Implement `DataLoadError(Exception)` custom exception and `load_sales_data(path: str) -> pd.DataFrame` decorated with `@st.cache_data` in `data/loader.py` — raises `DataLoadError` on missing file; returns raw DataFrame on success (depends on T004, T005)
+- [X] T006 Implement `DataLoadError(Exception)` custom exception and `load_sales_data(path: str) -> pd.DataFrame` decorated with `@st.cache_data` in `data/loader.py` — raises `DataLoadError` on missing file; returns raw DataFrame on success (depends on T004, T005)
 
 **Checkpoint**: `uv run pytest tests/data/test_loader.py` — T004 and T005 pass; all other tests still at 0
 

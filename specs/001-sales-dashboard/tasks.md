@@ -125,14 +125,14 @@ data/
 
 > **RED phase**: Run these tests and verify they FAIL before writing any implementation
 
-- [ ] T012 [P] [US2] Write failing test: `get_monthly_sales(df)` returns a DataFrame with columns `month` and `total_sales`, sorted chronologically, with correct aggregated values matching fixture data in `tests/data/test_transforms.py`
-- [ ] T013 [P] [US2] Write failing component contract test: `build_trend_chart(df)` returns a `plotly.graph_objects.Figure` with exactly one trace of type `scatter` in `tests/components/test_trend_chart.py`
+- [X] T012 [P] [US2] Write failing test: `get_monthly_sales(df)` returns a DataFrame with columns `month` and `total_sales`, sorted chronologically, with correct aggregated values matching fixture data in `tests/data/test_transforms.py`
+- [X] T013 [P] [US2] Write failing component contract test: `build_trend_chart(df)` returns a `plotly.graph_objects.Figure` with exactly one trace of type `scatter` in `tests/components/test_trend_chart.py`
 
 ### Implementation for US2 (GREEN phase — after T012 and T013 confirmed failing)
 
-- [ ] T014 [P] [US2] Implement `get_monthly_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — groups by calendar month, sums `total_amount`, sorts chronologically (depends on T012)
-- [ ] T015 [US2] Implement `build_trend_chart(df: pd.DataFrame) -> go.Figure` in `components/trend_chart.py` — use Plotly Express `px.line` as base; apply Graph Objects `.update_layout()` for axis labels and `.update_traces()` for tooltip format showing month and sales value (depends on T013, T014)
-- [ ] T016 [US2] Add trend chart section to `dashboard.py` below KPI cards — call `get_monthly_sales()` then `build_trend_chart()` and render with `st.plotly_chart()` (depends on T015)
+- [X] T014 [P] [US2] Implement `get_monthly_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — groups by calendar month, sums `total_amount`, sorts chronologically (depends on T012)
+- [X] T015 [US2] Implement `build_trend_chart(df: pd.DataFrame) -> go.Figure` in `components/trend_chart.py` — use Plotly Express `px.line` as base; apply Graph Objects `.update_layout()` for axis labels and `.update_traces()` for tooltip format showing month and sales value (depends on T013, T014)
+- [X] T016 [US2] Add trend chart section to `dashboard.py` below KPI cards — call `get_monthly_sales()` then `build_trend_chart()` and render with `st.plotly_chart()` (depends on T015)
 
 **Checkpoint**: Dashboard shows KPI cards + trend line chart; `uv run pytest` passes all tests so far
 

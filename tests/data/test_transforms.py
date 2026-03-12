@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from data.transforms import get_kpi_metrics
+from data.transforms import get_kpi_metrics, get_monthly_sales
 
 
 # T007 [US1]: get_kpi_metrics returns correct keys and types
@@ -18,3 +18,23 @@ def test_get_kpi_metrics_values(sample_df):
     expected_orders = len(sample_df)
     assert result["total_sales"] == pytest.approx(expected_sales)
     assert result["total_orders"] == expected_orders
+
+
+# T012 [US2]: get_monthly_sales returns correct columns, sorted chronologically
+def test_get_monthly_sales_columns(sample_df):
+    result = get_monthly_sales(sample_df)
+    assert "month" in result.columns
+    assert "total_sales" in result.columns
+
+
+def test_get_monthly_sales_sorted(sample_df):
+    result = get_monthly_sales(sample_df)
+    assert list(result["month"]) == sorted(result["month"].tolist())
+
+
+def test_get_monthly_sales_aggregation(sample_df):
+    result = get_monthly_sales(sample_df)
+    # sample_df has rows in Jan, Feb, Mar, Apr, May 2024
+    assert len(result) == 5
+    total = result["total_sales"].sum()
+    assert total == pytest.approx(sample_df["total_amount"].sum(), rel=1e-3)

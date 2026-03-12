@@ -178,14 +178,14 @@ US1 (KPI cards) + US2 (trend chart) + US5 (error handling) are complete.
 
 > **RED phase**: Run these tests and verify they FAIL before writing any implementation
 
-- [ ] T022 [P] [US3] Write failing test: `get_category_sales(df)` returns a DataFrame with columns `category` and `total_sales`, sorted descending by `total_sales`, with correct values matching fixture data in `tests/data/test_transforms.py`
-- [ ] T023 [P] [US3] Write failing component contract test: `build_category_chart(df)` returns a `plotly.graph_objects.Figure` with one bar trace and y-axis values sorted descending in `tests/components/test_category_chart.py`
+- [X] T022 [P] [US3] Write failing test: `get_category_sales(df)` returns a DataFrame with columns `category` and `total_sales`, sorted descending by `total_sales`, with correct values matching fixture data in `tests/data/test_transforms.py`
+- [X] T023 [P] [US3] Write failing component contract test: `build_category_chart(df)` returns a `plotly.graph_objects.Figure` with one bar trace and y-axis values sorted descending in `tests/components/test_category_chart.py`
 
 ### Implementation for US3 (GREEN phase — after T022 and T023 confirmed failing)
 
-- [ ] T024 [P] [US3] Implement `get_category_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — groups by `category`, sums `total_amount`, sorts descending (depends on T022)
-- [ ] T025 [US3] Implement `build_category_chart(df: pd.DataFrame) -> go.Figure` in `components/category_chart.py` — use `px.bar` as base; apply Graph Objects overrides for axis labels and tooltip showing category name and sales value (depends on T023, T024)
-- [ ] T026 [US3] Add two-column layout to `dashboard.py` below trend chart — place category chart in left column using `st.columns(2)`; leave right column placeholder for US4 (depends on T025)
+- [X] T024 [P] [US3] Implement `get_category_sales(df: pd.DataFrame) -> pd.DataFrame` in `data/transforms.py` — groups by `category`, sums `total_amount`, sorts descending (depends on T022)
+- [X] T025 [US3] Implement `build_category_chart(df: pd.DataFrame) -> go.Figure` in `components/category_chart.py` — use `px.bar` as base; apply Graph Objects overrides for axis labels and tooltip showing category name and sales value (depends on T023, T024)
+- [X] T026 [US3] Add two-column layout to `dashboard.py` below trend chart — place category chart in left column using `st.columns(2)`; leave right column placeholder for US4 (depends on T025)
 
 **Checkpoint**: Dashboard shows KPI cards + trend chart + category bar chart in left column; all tests pass
 

@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from data.transforms import get_kpi_metrics, get_monthly_sales
+from data.transforms import get_kpi_metrics, get_monthly_sales, get_category_sales
 
 
 # T007 [US1]: get_kpi_metrics returns correct keys and types
@@ -38,3 +38,23 @@ def test_get_monthly_sales_aggregation(sample_df):
     assert len(result) == 5
     total = result["total_sales"].sum()
     assert total == pytest.approx(sample_df["total_amount"].sum(), rel=1e-3)
+
+
+# T022 [US3]: get_category_sales returns correct columns, sorted descending
+def test_get_category_sales_columns(sample_df):
+    result = get_category_sales(sample_df)
+    assert "category" in result.columns
+    assert "total_sales" in result.columns
+
+
+def test_get_category_sales_sorted_descending(sample_df):
+    result = get_category_sales(sample_df)
+    sales = result["total_sales"].tolist()
+    assert sales == sorted(sales, reverse=True)
+
+
+def test_get_category_sales_aggregation(sample_df):
+    result = get_category_sales(sample_df)
+    # sample_df has 5 distinct categories
+    assert len(result) == 5
+    assert result["total_sales"].sum() == pytest.approx(sample_df["total_amount"].sum(), rel=1e-3)
